@@ -26,14 +26,14 @@ public class GameControl : MonoBehaviour {
 	GameObject player_anchor;
 
 	void Start () {
-		crosshair_gui = FindInHierarchy(this.gameObject,"crosshair");
-		player_anchor = FindInHierarchy(this.gameObject,"OVRCameraController");
-		left_gun_anchor = FindInHierarchy(this.gameObject,"MissileAnchor_L");
-		right_gun_anchor = FindInHierarchy(this.gameObject,"MissileAnchor_R");
-		Screen.showCursor = false;
+		crosshair_gui = Util.FindInHierarchy(this.gameObject,"crosshair");
+		player_anchor = Util.FindInHierarchy(this.gameObject,"OVRCameraController");
+		left_gun_anchor = Util.FindInHierarchy(this.gameObject,"MissileAnchor_L");
+		right_gun_anchor = Util.FindInHierarchy(this.gameObject,"MissileAnchor_R");
 	}
 
 	void Update () {
+		Screen.showCursor = false;
 		Vector3 position = this.gameObject.transform.position;
 		Quaternion rotation_q = this.gameObject.transform.rotation;
 		Vector3 rotation = rotation_q.eulerAngles;
@@ -99,49 +99,49 @@ public class GameControl : MonoBehaviour {
 				}
 
 				Vector3 cursor_position = crosshair_gui.transform.position;
-				cursor_position.x += vx;
-				cursor_position.y += vy;
+				if (Math.Abs(position.x) < X_MAX) cursor_position.x += vx;
+				if (Math.Abs(position.y) < Y_MAX) cursor_position.y += vy;
 				Vector3 player_position = player_anchor.transform.position;
 				Vector3 npc_dir = (new Vector3(
 					cursor_position.x-player_position.x,
 					cursor_position.y-player_position.y,
 					cursor_position.z-player_position.z)).normalized;
 
-				npc_dir.x *= 5;
-				npc_dir.y *= 5;
-				npc_dir.z *= 5;
+				npc_dir.x *= 20;
+				npc_dir.y *= 20;
+				npc_dir.z *= 20;
 
 				Vector3 convergence_pos = new Vector3(npc_dir.x + player_position.x,
 				                                      npc_dir.y+player_position.y,
 				                                      npc_dir.z+player_position.z);
 
 				Vector3 lanchor_position = left_gun_anchor.transform.position;
-				lanchor_position.x += vx;
-				lanchor_position.y += vy;
+				if (Math.Abs(position.x) < X_MAX) lanchor_position.x += vx;
+				if (Math.Abs(position.y) < Y_MAX)lanchor_position.y += vy;
 				Vector3 lbullet_vel = (new Vector3(convergence_pos.x-lanchor_position.x, 
 				                                   convergence_pos.y-lanchor_position.y, 
 				                                   convergence_pos.z-lanchor_position.z)).normalized;
 				lbullet_vel.x *= 0.25f;
 				lbullet_vel.y *= 0.25f;
 				lbullet_vel.z *= 0.25f;
-				lbullet_vel.x += vx;
-				lbullet_vel.y += vy;
+				if (Math.Abs(position.x) < X_MAX) lbullet_vel.x += vx;
+				if (Math.Abs(position.y) < Y_MAX)lbullet_vel.y += vy;
 				BulletManager.instance.AddBullet(
 					lanchor_position,
 					lbullet_vel
 				);
 
 				Vector3 ranchor_position = right_gun_anchor.transform.position;
-				ranchor_position.x += vx;
-				ranchor_position.y += vy;
+				if (Math.Abs(position.x) < X_MAX) ranchor_position.x += vx;
+				if (Math.Abs(position.y) < Y_MAX)ranchor_position.y += vy;
 				Vector3 rbullet_vel = (new Vector3(convergence_pos.x-ranchor_position.x, 
 				                                   convergence_pos.y-ranchor_position.y, 
 				                                   convergence_pos.z-ranchor_position.z)).normalized;
 				rbullet_vel.x *= 0.25f;
 				rbullet_vel.y *= 0.25f;
 				rbullet_vel.z *= 0.25f;
-				rbullet_vel.x += vx;
-				rbullet_vel.y += vy;
+				if (Math.Abs(position.x) < X_MAX) rbullet_vel.x += vx;
+				if (Math.Abs(position.y) < Y_MAX) rbullet_vel.y += vy;
 				BulletManager.instance.AddBullet(
 					ranchor_position,
 					rbullet_vel
@@ -149,31 +149,5 @@ public class GameControl : MonoBehaviour {
 			}
 		}
 
-	}
-
-	public static GameObject FindInHierarchy(GameObject root, string name)
-	{
-		if (root == null || root.name == name)
-		{
-			return root;
-		}
-
-		Transform child = root.transform.Find(name);
-		if (child != null)
-		{
-			return child.gameObject;
-		}
-
-		int numChildren = root.transform.childCount;
-		for (int i = 0; i < numChildren; i++)
-		{
-			GameObject go = FindInHierarchy(root.transform.GetChild(i).gameObject, name);
-			if (go != null)
-			{
-				return go;
-			}
-		}
-
-		return null;
 	}
 }
