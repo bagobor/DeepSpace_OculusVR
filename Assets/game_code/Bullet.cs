@@ -31,5 +31,9 @@ public class Bullet {
 		GameObject.Destroy(obj);
 		obj = null;
 	}
+
+	public Vector3 get_position() {
+		return obj.transform.position;
+	}
 }
 

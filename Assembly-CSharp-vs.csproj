@@ -65,6 +65,7 @@
      <Compile Include="Assets\Shared Auxiliary Code\RegisteredComponent.cs" />
      <Compile Include="Assets\Shared Auxiliary Code\SystemTime.cs" />
      <Compile Include="Assets\Shared Auxiliary Code\UnitySingleton.cs" />
+     <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Fonts\tk2dFont.cs" />
@@ -97,6 +98,10 @@
      <Compile Include="Assets\ZSpriteEngine\ZSpriteManager.cs" />
      <Compile Include="Assets\game_code\Bullet.cs" />
      <Compile Include="Assets\game_code\BulletManager.cs" />
+     <Compile Include="Assets\game_code\Effect.cs" />
+     <Compile Include="Assets\game_code\EffectManager.cs" />
+     <Compile Include="Assets\game_code\Enemy.cs" />
+     <Compile Include="Assets\game_code\EnemyManager.cs" />
      <Compile Include="Assets\game_code\GameControl.cs" />
      <Compile Include="Assets\game_code\GameGUI.cs" />
      <Compile Include="Assets\game_code\Util.cs" />

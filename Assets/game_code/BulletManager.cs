@@ -5,7 +5,7 @@ public class BulletManager : MonoBehaviour {
 
 	public static BulletManager instance;
 
-	List<Bullet> bullets = new List<Bullet>();
+	public List<Bullet> bullets = new List<Bullet>();
 
 	void Start () {
 		instance = this;
@@ -24,6 +24,7 @@ public class BulletManager : MonoBehaviour {
 
 	public void AddBullet(Vector3 pos, Vector3 vel) {
 		GameObject bullet_object = (GameObject)Instantiate(Resources.Load("Bullet"));
+		bullet_object.transform.parent = this.gameObject.transform;
 		bullets.Add(new Bullet(pos,vel,bullet_object));
 	}
 

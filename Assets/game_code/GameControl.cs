@@ -4,10 +4,10 @@ using System;
 
 public class GameControl : MonoBehaviour {
 		
-	static float X_MAX = 25;
-	static float X_MIN = -25;
-	static float Y_MAX = 25;
-	static float Y_MIN = -25;
+	public static float X_MAX = 25;
+	public static float X_MIN = -25;
+	public static float Y_MAX = 25;
+	public static float Y_MIN = -25;
 	static float VX_MAX = 1;
 	static float VY_MAX = 1;
 
@@ -121,9 +121,9 @@ public class GameControl : MonoBehaviour {
 				Vector3 lbullet_vel = (new Vector3(convergence_pos.x-lanchor_position.x, 
 				                                   convergence_pos.y-lanchor_position.y, 
 				                                   convergence_pos.z-lanchor_position.z)).normalized;
-				lbullet_vel.x *= 0.25f;
-				lbullet_vel.y *= 0.25f;
-				lbullet_vel.z *= 0.25f;
+				lbullet_vel.x *= 0.75f;
+				lbullet_vel.y *= 0.75f;
+				lbullet_vel.z *= 0.75f;
 				if (Math.Abs(position.x) < X_MAX) lbullet_vel.x += vx;
 				if (Math.Abs(position.y) < Y_MAX)lbullet_vel.y += vy;
 				BulletManager.instance.AddBullet(
@@ -137,9 +137,9 @@ public class GameControl : MonoBehaviour {
 				Vector3 rbullet_vel = (new Vector3(convergence_pos.x-ranchor_position.x, 
 				                                   convergence_pos.y-ranchor_position.y, 
 				                                   convergence_pos.z-ranchor_position.z)).normalized;
-				rbullet_vel.x *= 0.25f;
-				rbullet_vel.y *= 0.25f;
-				rbullet_vel.z *= 0.25f;
+				rbullet_vel.x *= 0.75f;
+				rbullet_vel.y *= 0.75f;
+				rbullet_vel.z *= 0.75f;
 				if (Math.Abs(position.x) < X_MAX) rbullet_vel.x += vx;
 				if (Math.Abs(position.y) < Y_MAX) rbullet_vel.y += vy;
 				BulletManager.instance.AddBullet(
