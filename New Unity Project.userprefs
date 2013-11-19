@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/game_code/BulletManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/game_code/EffectManager.cs">
     <Files>
-      <File FileName="Assets/game_code/EffectManager.cs" Line="3" Column="1" />
-      <File FileName="Assets/game_code/BulletManager.cs" Line="16" Column="26" />
+      <File FileName="Assets/game_code/BulletManager.cs" Line="18" Column="28" />
+      <File FileName="Assets/game_code/EffectManager.cs" Line="20" Column="19" />
+      <File FileName="Assets/game_code/Effect.cs" Line="13" Column="65" />
+      <File FileName="Assets/game_code/EnemyManager.cs" Line="34" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +13,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="game_code" expanded="True">
-                <Node name="BulletManager.cs" selected="True" />
+                <Node name="EffectManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
